@@ -30,6 +30,8 @@ namespace Neoflix
         public static Task InitDriverAsync(string uri, string username, string password)
         {
             // TODO: Create an instance of the driver here
+            _driver = GraphDatabase.Driver(uri,  AuthTokens.Basic(username, password));
+            _driver.VerifyConnectivityAsync();
             return Task.CompletedTask;
         }
         // end::initDriver[]
